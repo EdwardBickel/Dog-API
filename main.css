@@ -1,0 +1,52 @@
+body {
+  margin:0;
+  font-family: sans-serif;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* default for flexbox is horizontal. We want to separate the header and slideshow space vertically */
+}
+
+.header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.header h1 {
+  margin: 0 0 10px 0;
+}
+
+.header select {
+  font-size: 1rem;
+}
+
+.slideshow {
+  flex: 1; /* Since the parent ele .app is using flexbox, we can let slideshow take up remaining space for the images */
+  background-color: #333;
+  position: relative; /* position its children ele in relation to it using absolute positioning */
+  overflow: hidden; /* ensure photos stay within the slideshow space. */
+}
+
+.slide {
+  position: absolute; /* in reference to its parent ele .slideshow */
+  top: 0; /* take up full available width and height */
+  bottom: 0; /* take up full available width and height */
+  left: 0; /* take up full available width and height */
+  right: 0; /* take up full available width and height */
+  background-repeat: no-repeat; /* to prevent tiling and repeat of img*/
+  background-size: contain; /* automatically size the img to be as large as possible while still fitting in the container */
+  background-position: center center;
+  opacity: 0; /* baseline opacity set to invisible */
+  transform: scale(1); /* baseline scale - regular size img */
+  transition: all .9s ease-out; /* img gradually fades away.*/
+}
+
+.slide:nth-last-child(2) { /* select second to last item of slide type */
+  opacity: 1; /* second to last img to be fully visible */
+  transform: scale(1.08); /* create zoom effect */
+}
+
+/* Line 47: this selector will always make sure the second to last image is visible as the third photo is added to the collection and the oldest photo is removed.
