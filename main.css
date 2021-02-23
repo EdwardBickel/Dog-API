@@ -46,3 +46,4 @@ body {
 .slide:nth-last-child(2) {
   opacity: 1;
   transform: scale(1.08);
+}
